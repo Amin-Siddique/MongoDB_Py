@@ -9,13 +9,13 @@ r = requests.get('https://formulae.brew.sh/api/formula.json')
 packages_json = r.json()
 packages_str = json.dumps(packages_json, indent = 2)
 
+
+#Writing to a file (only selected 1 pair):
 with open("json.txt", "w") as external_file:
     for i in range(1):
         names = json.dumps(packages_json[i], indent = 2)
         print(names, file=external_file)
 external_file.close()
-
-
 
 
 # Loading or Opening the json file
@@ -34,7 +34,7 @@ with open('json.txt') as dta:
         mycollection.insert_one(file)
         print("insert one")
 
-##print out the result
+##print out the result using pprint:
 select_find = mycollection.find()
 for x in select_find:
     pprint(x)
